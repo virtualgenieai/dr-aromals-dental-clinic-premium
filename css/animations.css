@@ -8,3 +8,70 @@
 .brand-mark { transition:transform 360ms cubic-bezier(.22,1,.36,1), background-color 360ms ease; }
 .brand:hover .brand-mark { transform:rotate(-6deg) scale(1.025); }
 @media (prefers-reduced-motion:reduce) { .hero-copy>* ,.hero-media { animation:none !important; } }
+
+/* =========================================================
+   DR. AROMAL — MANUAL REVIEW CAROUSEL + TYPEWRITER
+   No automatic horizontal movement.
+========================================================= */
+
+.reviews-track-window {
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  scrollbar-width: none;
+  touch-action: auto;
+}
+
+.reviews-track-window::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews-track-window.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.reviews-track-window .review-track,
+.reviews-track-window [data-reviews-track] {
+  animation: none !important;
+  transform: none;
+  width: max-content;
+  min-width: 100%;
+}
+
+.reviews-track-window .review-card {
+  flex: 0 0 min(82vw, 360px);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+/* Subtle typing cursor */
+.review-text.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 3px;
+  vertical-align: -0.12em;
+  background: currentColor;
+  animation: reviewCaret 800ms steps(1) infinite;
+}
+
+@keyframes reviewCaret {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-track-window {
+    scroll-behavior: auto !important;
+    scroll-snap-type: x proximity;
+  }
+
+  .review-text.is-typing::after {
+    animation: none;
+  }
+}
