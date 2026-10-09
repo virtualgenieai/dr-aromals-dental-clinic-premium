@@ -286,3 +286,161 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+/* =========================================================
+   REVIEW CAROUSEL — MANUAL SWIPE + LETTER-BY-LETTER TEXT
+========================================================= */
+(() => {
+  function initManualReviews() {
+    const track = document.querySelector('[data-reviews-track]');
+    if (!track || track.dataset.manualReviewsReady === 'true') return;
+
+    const viewport = track.closest('.reviews-track-window');
+    if (!viewport) return;
+
+    track.dataset.manualReviewsReady = 'true';
+
+    // Disable any existing automatic review-track animation.
+    track.style.animation = 'none';
+    track.style.transform = 'none';
+
+    viewport.style.overflowX = 'auto';
+    viewport.style.overflowY = 'hidden';
+    viewport.style.scrollSnapType = 'x mandatory';
+
+    const cards = Array.from(track.querySelectorAll('.review-card'))
+      .filter(card => card.getAttribute('aria-hidden') !== 'true');
+
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+      card.style.scrollSnapAlign = 'center';
+    });
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const timers = new WeakMap();
+    let activeCard = null;
+
+    function typeReview(card) {
+      if (!card || card === activeCard) return;
+      activeCard = card;
+
+      const text = card.querySelector('[data-type-text], .review-text');
+      if (!text) return;
+
+      clearTimeout(timers.get(text));
+
+      // Prefer the original full text stored in the data attribute.
+      const fullText = text.dataset.typeText || text.textContent.trim();
+
+      if (reduceMotion) {
+        text.textContent = fullText;
+        return;
+      }
+
+      text.textContent = '';
+      text.classList.add('is-typing');
+
+      let index = 0;
+      const typeNext = () => {
+        if (!text.isConnected || activeCard !== card) {
+          text.classList.remove('is-typing');
+          return;
+        }
+
+        text.textContent = fullText.slice(0, index);
+        index++;
+
+        if (index <= fullText.length) {
+          timers.set(text, setTimeout(typeNext, 22));
+        } else {
+          text.classList.remove('is-typing');
+        }
+      };
+
+      typeNext();
+    }
+
+    // Find the card closest to the centre of the visible carousel.
+    function updateActiveReview() {
+      const viewportRect = viewport.getBoundingClientRect();
+      const centre = viewportRect.left + viewportRect.width / 2;
+
+      let closest = null;
+      let closestDistance = Infinity;
+
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const distance = Math.abs(rect.left + rect.width / 2 - centre);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closest = card;
+        }
+      });
+
+      typeReview(closest);
+    }
+
+    let scrollTimer;
+    viewport.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(updateActiveReview, 100);
+    }, { passive: true });
+
+    // Mouse drag on desktop; native touch scrolling remains enabled.
+    let pointerId = null;
+    let startX = 0;
+    let startScroll = 0;
+    let dragged = false;
+
+    viewport.addEventListener('pointerdown', event => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      if (event.target.closest('a, button')) return;
+
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startScroll = viewport.scrollLeft;
+      dragged = false;
+    });
+
+    viewport.addEventListener('pointermove', event => {
+      if (event.pointerId !== pointerId) return;
+
+      if (Math.abs(event.clientX - startX) > 5) {
+        dragged = true;
+        viewport.classList.add('is-dragging');
+        viewport.scrollLeft = startScroll - (event.clientX - startX);
+      }
+    });
+
+    function endDrag(event) {
+      if (event.pointerId !== pointerId) return;
+      pointerId = null;
+      viewport.classList.remove('is-dragging');
+
+      if (dragged) {
+        // Keep the final position; don't restart an autoplay animation.
+        setTimeout(updateActiveReview, 80);
+      }
+    }
+
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+    viewport.addEventListener('lostpointercapture', endDrag);
+
+    // Start typing the first visible review.
+    requestAnimationFrame(updateActiveReview);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initManualReviews, {
+      once: true
+    });
+  } else {
+    initManualReviews();
+  }
+})();
