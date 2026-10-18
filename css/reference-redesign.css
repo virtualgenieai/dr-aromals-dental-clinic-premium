@@ -1,0 +1,88 @@
+/* Total Dental LKN-inspired visual refresh for Dr. Aromal's Dental Care.
+   Original branding, clinic photos and copy are retained; this is not a pixel-copy. */
+:root{
+  --ink:#142d3a; --green:#087f83; --green2:#0b9997; --ivory:#f5fbfa; --paper:#ffffff;
+  --mint:#e4f5f3; --gold:#efaa55; --muted:#5d7078; --line:#d9e8e8;
+  --shadow:0 22px 60px rgba(16,55,65,.12); --radius:22px; --max:1200px;
+  --accent-blue:#d9f1f4; --deep:#102e3b;
+}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{background:#fff;color:var(--ink);font-family:'DM Sans',Arial,sans-serif;overflow-x:hidden}
+::selection{background:#0b999733;color:var(--deep)}
+.topbar{background:var(--deep);color:#eafafa;letter-spacing:.1em;text-transform:uppercase;font-size:.66rem;padding:9px 14px}
+.header{background:rgba(255,255,255,.88);border-bottom:1px solid rgba(12,79,89,.1);box-shadow:0 8px 30px rgba(16,55,65,.035);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:box-shadow .35s,background .35s}
+.header.is-scrolled{background:rgba(255,255,255,.96);box-shadow:0 12px 38px rgba(16,55,65,.1)}
+.nav{height:82px;transition:height .35s}.header.is-scrolled .nav{height:70px}
+.brand-logo{width:48px;height:48px;object-fit:contain;border-radius:50%;background:#fff;box-shadow:0 4px 16px #12394412}
+.brand-name{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;color:var(--deep)}
+.brand-sub{color:var(--green);font-weight:700;letter-spacing:.17em}
+.nav-links{gap:clamp(12px,1.7vw,24px);font-size:.8rem;font-weight:600}
+.nav-links a{position:relative;padding:8px 0;color:#38535e;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:1px;height:2px;border-radius:2px;background:var(--green);transition:right .35s cubic-bezier(.2,.8,.2,1)}
+.nav-links a:hover::after,.nav-links a.active::after{right:0}.nav-links a:hover,.nav-links a.active{color:var(--green)}
+.btn{border-radius:999px;padding:13px 22px;font-weight:700;letter-spacing:-.01em;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background .35s,border-color .35s}
+.btn-primary{background:var(--green);box-shadow:0 10px 24px #087f8326;color:#fff}
+.btn-primary:hover{background:var(--deep);transform:translateY(-3px);box-shadow:0 16px 32px #102e3b2b}
+.btn-outline{border-color:#087f8355;color:var(--green);background:#ffffffb8}.btn-outline:hover{background:var(--mint);border-color:var(--green);transform:translateY(-3px)}
+.btn-light{background:#fff;color:var(--deep)}
+.eyebrow{color:var(--green);letter-spacing:.16em;font-size:.69rem}
+h1,h2,h3{color:var(--deep);letter-spacing:-.04em}
+h1{font-size:clamp(3rem,6.2vw,5.8rem);line-height:.99;font-weight:500}
+h1 em,h2 em{color:var(--green);font-style:normal}
+h2{font-size:clamp(2.15rem,4vw,3.7rem);line-height:1.04}
+h3{line-height:1.16}
+p{color:var(--muted)}
+.hero{position:relative;padding:clamp(52px,7vw,92px) 0 clamp(58px,7vw,90px);background:radial-gradient(ellipse at 85% 8%,#dff5f2 0,transparent 36%),linear-gradient(135deg,#f8fcfb 0%,#fff 58%,#f0faf9 100%)}
+.hero::before{content:"";position:absolute;right:-110px;top:-170px;width:420px;height:420px;border:1px solid #0b99971a;border-radius:50%;box-shadow:0 0 0 42px #0b999708,0 0 0 84px #0b999705;pointer-events:none}
+.hero-grid{position:relative;z-index:1;gap:clamp(28px,5vw,76px);grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+.hero-copy{max-width:610px}.hero-copy .eyebrow{display:inline-flex;align-items:center;gap:10px}.hero-copy .eyebrow::before{content:"";width:26px;height:2px;background:var(--gold)}
+.hero-copy>p{font-size:clamp(1rem,1.4vw,1.13rem);max-width:520px;line-height:1.8}
+.hero-media{min-height:clamp(380px,43vw,590px);border-radius:30px 120px 30px 30px;box-shadow:0 28px 75px rgba(16,55,65,.17);isolation:isolate}
+.hero-video-media{background:#d4e8e7}.hero-video{object-fit:cover;object-position:center;width:100%;height:100%;position:absolute;inset:0}
+.hero-video-overlay{background:linear-gradient(180deg,#092e3a00 45%,#092e3a70 100%)}
+.hero-video-fallback{background:linear-gradient(140deg,#d9eeec,#8fb8b6)}
+.hero-actions{gap:13px}.trust-strip{background:var(--deep);border:0;color:#fff}.trust-grid{padding:21px 0}.trust-item{color:#effafa;font-size:.8rem}.trust-icon{border-color:#7bd2cd75;color:#8ce0da;background:#ffffff08}
+.section{padding:clamp(68px,8vw,112px) 0;position:relative}
+.section[style*="#f0f2ec"],.section[style*="#edf1e9"],.section[style*="#f0f2ec"]{background:linear-gradient(180deg,#f0f9f8,#f8fcfb)!important}
+.section-head{max-width:760px;margin-bottom:clamp(30px,4vw,50px)}.section-head .eyebrow{display:inline-flex;align-items:center;gap:12px}.section-head .eyebrow::before,.section-head .eyebrow::after{content:"";height:1px;width:22px;background:var(--gold)}
+.section-head h2{margin-top:14px}.section-head p{line-height:1.8}
+.split{gap:clamp(28px,6vw,86px)}.image-panel{border-radius:26px 90px 26px 26px;box-shadow:var(--shadow);background:#dcefed;min-height:380px}.image-panel img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}.image-panel:hover img{transform:scale(1.035)}
+.treatment-grid{gap:clamp(14px,2vw,24px)}
+.treatment-card,.doctor-card,.clinic-card{position:relative;background:rgba(255,255,255,.83);border:1px solid rgba(18,93,101,.13);border-radius:24px;box-shadow:0 12px 34px rgba(16,55,65,.055);overflow:hidden;transform:translateZ(0);transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s,border-color .4s,background .4s}
+.treatment-card::before,.doctor-card::before,.clinic-card::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;border-radius:inherit;background:linear-gradient(135deg,#ffffff72,transparent 38%,#8bd8d31c);opacity:.6;transition:opacity .4s}
+.treatment-card:hover,.doctor-card:hover,.clinic-card:hover{transform:translateY(-8px);box-shadow:0 26px 58px rgba(16,55,65,.14);border-color:#4eb7b055;background:#fff}
+.card-media{height:clamp(165px,18vw,225px);background:#dcefed;overflow:hidden}.card-media::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0c333d40);pointer-events:none}
+.card-media .asset-photo{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .7s}
+.treatment-card:hover .card-media .asset-photo,.clinic-card:hover .card-media .asset-photo{transform:scale(1.075);filter:saturate(1.06)}
+.card-body{padding:clamp(18px,2.2vw,27px)}.card-body h3{font-size:clamp(1.2rem,1.6vw,1.45rem)}.card-body p{font-size:.87rem;line-height:1.75}
+.card-link{color:var(--green);font-size:.79rem;display:inline-flex;align-items:center;gap:8px;font-weight:800;transition:gap .3s}.card-link:hover{gap:13px}
+.why-section{background:var(--deep);color:#fff;overflow:hidden}.why-section::before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid #82d8d324;right:-200px;top:-190px;box-shadow:0 0 0 55px #82d8d30a,0 0 0 110px #82d8d307}.why-section h2,.why-section h3{color:#fff}.why-section .eyebrow{color:#8be0d9}.why-section p{color:#c6d9dc}.why-grid{gap:15px}.why-card{position:relative;overflow:hidden;padding:clamp(20px,2.3vw,28px);border-radius:20px;border:1px solid #b9e8e51c;background:linear-gradient(145deg,#ffffff0c,#ffffff04);backdrop-filter:blur(12px);transition:transform .5s,background .5s,border-color .5s}.why-card::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:3px;background:var(--gold);transition:right .45s}.why-card:hover{transform:translateY(-6px);background:#ffffff12;border-color:#b9e8e54a}.why-card:hover::after{right:0}.why-card .trust-icon{color:#91e2dc;border-color:#91e2dc70}
+.clinic-grid{gap:clamp(16px,2.5vw,28px)}.clinic-card .card-media{height:clamp(200px,23vw,280px)}
+.doctor-grid{gap:22px}.doctor-photo{height:clamp(220px,27vw,330px);background:#dcefed}.doctor-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}.doctor-card:hover .doctor-photo img{transform:scale(1.06)}.doctor-role{color:var(--green);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}.doctor-carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin:20px 0 0}.doctor-carousel-arrow{width:44px;height:44px;border:1px solid #087f8340;border-radius:50%;background:#fff;color:var(--green);font-size:1.35rem;box-shadow:0 6px 18px #102e3b0a;transition:background .3s,color .3s,transform .3s}.doctor-carousel-arrow:hover{background:var(--green);color:white;transform:scale(1.05)}.doctor-carousel-dots{display:flex;align-items:center;gap:8px}.doctor-carousel-dot{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:#b5d4d2;transition:width .3s,background .3s}.doctor-carousel-dot.active{width:24px;background:var(--green)}
+.clinic-filter{gap:9px;flex-wrap:wrap}.filter-btn{border-color:#087f8338;background:#fff;color:var(--green);transition:all .3s}.filter-btn:hover,.filter-btn.active{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 8px 22px #087f8326}
+.page-hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 82% 0%,#dff5f2,transparent 40%),linear-gradient(135deg,#f5fbfa,#fff 65%,#edf8f7);padding:clamp(58px,7vw,92px) 0 clamp(44px,5vw,68px)}.page-hero::after{content:"";position:absolute;right:-90px;bottom:-230px;width:380px;height:380px;border-radius:50%;border:1px solid #087f8326;box-shadow:0 0 0 40px #087f8308,0 0 0 80px #087f8305}.page-hero .container{position:relative;z-index:1}.page-hero h1{max-width:900px;margin-inline:auto}.page-hero p{line-height:1.8}
+.clinic-hero{min-height:clamp(420px,48vw,620px);background:#dcefed}.clinic-hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);animation:clinicHeroSettle 1.5s cubic-bezier(.2,.8,.2,1) both}.clinic-hero-content{background:linear-gradient(0deg,#092d3be8 0%,#092d3b65 48%,transparent 100%);padding:90px 0 42px}.clinic-hero-content h1,.clinic-hero-content .eyebrow{color:#fff}.clinic-hero-content p{color:#e3f3f3}
+.detail-card,.booking-modal,.booking-option{background:rgba(255,255,255,.88);border:1px solid #087f8320;box-shadow:0 20px 55px rgba(16,55,65,.09);backdrop-filter:blur(16px)}.map-placeholder{background:linear-gradient(135deg,#e2f5f2,#d5ebee);color:var(--green);border:1px solid #087f8322}.cta-band{position:relative;overflow:hidden;background:linear-gradient(115deg,#e2f5f2,#f6fbfa 65%,#d8eff0);padding:clamp(48px,6vw,78px) 0}.cta-band::after{content:"";position:absolute;width:300px;height:300px;right:-120px;top:-150px;border:1px solid #087f8324;border-radius:50%;box-shadow:0 0 0 35px #087f8308,0 0 0 70px #087f8305}.cta-inner{position:relative;z-index:1}.cta-inner h2{max-width:760px}
+.footer{background:#0c2935;padding:58px 0 22px}.footer h3{color:#8be0d9}.footer .brand-sub{color:#a6deda}.footer .brand-name{color:#fff!important}.footer .brand-logo{background:#fff}.footer a:hover{color:#8be0d9}.footer-bottom{border-color:#ffffff1f}
+.floating-book{background:var(--green);box-shadow:0 15px 35px #102e3b35}.modal-backdrop{background:rgba(7,31,40,.68);backdrop-filter:blur(10px)}.booking-modal{border-radius:28px}.booking-option{transition:transform .3s,border-color .3s,background .3s}.booking-option:hover{transform:translateY(-3px);border-color:#087f8360;background:#f0fbfa}.booking-option strong{color:var(--deep)}
+.reveal{opacity:0;transform:translate3d(0,30px,0) scale(.985);filter:blur(2px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1),filter .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--reveal-delay,0ms);will-change:opacity,transform}.reveal.visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);will-change:auto}
+/* Staggered cards create the sequential, scroll-led rhythm of the reference. */
+.treatment-grid>.reveal:nth-child(2),.clinic-grid>.reveal:nth-child(2),.why-grid>.reveal:nth-child(2){--reveal-delay:90ms}
+.treatment-grid>.reveal:nth-child(3),.why-grid>.reveal:nth-child(3){--reveal-delay:180ms}
+.treatment-grid>.reveal:nth-child(4),.why-grid>.reveal:nth-child(4){--reveal-delay:270ms}
+.treatment-grid>.reveal:nth-child(5){--reveal-delay:360ms}
+.treatment-grid>.reveal:nth-child(6){--reveal-delay:450ms}
+/* Section separators and full-width film bands */
+.care-film-break{position:relative;min-height:clamp(380px,54vw,650px);display:flex;align-items:center;overflow:hidden;background:#0d2e3b}.care-film-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.care-film-shade{position:absolute;inset:0;background:linear-gradient(90deg,#092d3be8 0%,#092d3b99 52%,#092d3b1c 100%)}.care-film-content{position:relative;z-index:1;padding-block:80px}.care-film-content h2,.care-film-content .eyebrow{color:#fff}.care-film-content h2 em{color:#8be0d9}.care-film-content p{color:#e0f1f1;max-width:480px}
+.practice-showcase{background:#f6fbfa}.showcase-sign{border-radius:24px;box-shadow:var(--shadow)}.showcase-inset{border:6px solid #f6fbfa;box-shadow:0 16px 42px #102e3b20}.rating-card{background:#fff;border:1px solid #087f831a;border-radius:18px;box-shadow:0 12px 30px #102e3b08;transition:transform .35s,box-shadow .35s}.rating-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px #102e3b12}.rating-stars{color:#e5a24d}
+/* No continuous conveyor: team profiles remain a controlled glass carousel. */
+.doctor-belt.doctor-carousel{overflow:hidden;border-radius:28px;padding:12px 0 24px;mask-image:none;-webkit-mask-image:none;touch-action:pan-y}
+.doctor-belt.doctor-carousel::before{content:"";position:absolute;inset:5% 12%;pointer-events:none;background:radial-gradient(ellipse at center,#83d9d333,transparent 72%);filter:blur(24px)}
+.doctor-belt.doctor-carousel .doctor-track{display:flex;gap:18px;width:100%;animation:none!important;transition:transform 680ms cubic-bezier(.22,1,.36,1);will-change:transform;position:relative;z-index:1}
+.doctor-belt.doctor-carousel .doctor-track>.doctor-card{flex:0 0 100%;width:100%;max-width:420px;margin:0 auto;border:1px solid #ffffffb5;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);box-shadow:0 22px 55px rgba(16,55,65,.13)}
+@keyframes clinicHeroSettle{from{transform:scale(1.08);filter:saturate(.8)}to{transform:scale(1.02);filter:saturate(1)}}
+@keyframes softDrift{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-8px,0)}}
+@media(max-width:1000px){.nav-links{gap:12px}.hero-grid{grid-template-columns:1fr 1fr}.hero-media{border-radius:24px 72px 24px 24px}.doctor-belt.doctor-carousel .doctor-track>.doctor-card{max-width:390px}}
+@media(max-width:760px){.topbar{font-size:.59rem;letter-spacing:.07em}.nav{height:68px}.header.is-scrolled .nav{height:62px}.brand-logo{width:42px;height:42px}.nav-links{background:rgba(255,255,255,.98);backdrop-filter:blur(18px);top:68px}.hero{padding:42px 0 50px}.hero-grid{grid-template-columns:1fr;gap:28px}.hero-media{min-height:clamp(300px,92vw,430px);border-radius:22px 76px 22px 22px}.hero-copy h1{font-size:clamp(2.9rem,12vw,4.2rem)}.trust-grid{gap:13px}.trust-item{font-size:.73rem}.trust-icon{width:34px;height:34px}.section{padding:66px 0}.section-head{text-align:left;margin-bottom:28px}.section-head .eyebrow::after{display:none}.treatment-grid{grid-template-columns:1fr 1fr}.card-media{height:clamp(135px,38vw,190px)}.card-body{padding:16px}.card-body h3{font-size:1.14rem}.card-body p{font-size:.81rem}.why-grid{grid-template-columns:1fr 1fr}.clinic-grid{grid-template-columns:1fr}.clinic-card .card-media{height:230px}.doctor-belt.doctor-carousel .doctor-track>.doctor-card{max-width:min(86vw,360px)}.clinic-hero{min-height:450px}.clinic-hero-content{padding:80px 0 32px}.cta-inner{align-items:flex-start;flex-direction:column}.care-film-shade{background:linear-gradient(90deg,#092d3bdc,#092d3b78)}.care-film-content{padding-block:64px}.footer-grid{gap:26px}.reveal{transform:translate3d(0,20px,0) scale(.99);filter:none}}
+@media(max-width:420px){.container{width:calc(100% - 28px)}.treatment-grid{grid-template-columns:1fr}.card-media{height:220px}.why-grid{grid-template-columns:1fr}.trust-grid{grid-template-columns:1fr 1fr}.booking-options{grid-template-columns:1fr}.hero-actions .btn{width:100%}.doctor-belt.doctor-carousel .doctor-track>.doctor-card{max-width:88vw}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.visible{opacity:1;transform:none;filter:none;transition:none;will-change:auto}.hero-copy>* ,.hero-media,.clinic-hero-image{animation:none!important}.doctor-belt.doctor-carousel .doctor-track{transition:none!important}.care-film-video{display:none}.care-film-break{background:linear-gradient(135deg,#0c2935,#087f83)}}
