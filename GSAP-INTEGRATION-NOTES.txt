@@ -1,0 +1,8 @@
+GSAP integration starter
+
+Changes in this ZIP:
+- Added GSAP and ScrollTrigger CDN scripts to index.html before the existing config.js and main.js scripts.
+- Added a guarded ScrollTrigger registration at the top of js/main.js.
+- Existing website files and assets are otherwise preserved.
+
+Important: this loads the libraries only. It does not yet replace the current hero scroll animation. Test this starter first; next step is to integrate the pinned, expanding hero carefully. The browser needs an internet connection to fetch the CDN scripts.
